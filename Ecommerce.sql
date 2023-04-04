@@ -2,8 +2,9 @@ create database Ecommerce;
 use Ecommerce;
 
 
+
 create table T_User(
-	phonenumber varchar(50) primary key,
+	phonenumber varchar(50) primary key ,
     nameuser varchar(255),
     pass varchar(50),
 	roleuser varchar(10),
@@ -12,25 +13,25 @@ create table T_User(
 );
 
 create table T_Category(
-	idcategory varchar(50) primary key,
+	idcategory bigint primary key AUTO_INCREMENT,
     namecategory varchar(255)
 );
 
 
 create table T_Product(
-	idproduct varchar(50) primary key,
+	idproduct bigint primary key AUTO_INCREMENT,
     nameproduct varchar(254),
     price int,
     color varchar(254),
     quantityproduct int,
     description text,
-    idcategory varchar(50),
+    idcategory bigint,
     image text,
     FOREIGN KEY (idcategory) REFERENCES T_Category(idcategory)
 );
 
 create table T_Order(
-	idorder varchar(50) primary key,
+	idorder bigint primary key AUTO_INCREMENT,
     phonenumberuser varchar(50),
     dateorder date,
     totalprice int,
@@ -40,8 +41,8 @@ create table T_Order(
 );
 
 create table T_OrderLines(
-	idorder varchar(50),
-    idproduct varchar(50),
+	idorder bigint AUTO_INCREMENT,
+    idproduct bigint,
     quantity int,
     price int,
     FOREIGN KEY (idorder) REFERENCES T_Order(idorder),
@@ -49,14 +50,6 @@ create table T_OrderLines(
     PRIMARY KEY (idorder,idproduct)
 );
 
-
-create table T_Cart(
-	id_user varchar(50),
-    id_product bigint,
-    primary key (id_user,id_product),
-    FOREIGN KEY (id_user) REFERENCES T_User(phonenumber),
-	FOREIGN KEY (id_product) REFERENCES T_Product(id)
-);
 
 
 
