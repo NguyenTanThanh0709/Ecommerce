@@ -105,4 +105,32 @@ Các lớp trong Service Layer thường được đánh dấu bằng Annotation
 ![image](https://user-images.githubusercontent.com/94300667/229820527-4d6cac32-b77d-4e5d-a60b-36e7ac92b9b3.png)
 # === SPRING SECURITY ===
 
+![image](https://user-images.githubusercontent.com/94300667/229833262-dcff122b-12b8-4d3f-87d8-101ecddee843.png)
+Dòng đầu tiên http.csrf().disable() tắt tính năng bảo vệ CSRF của Spring Security.
 
+Dòng tiếp theo http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**", "/", "/home", "/register", "/login", "/registerhandle").permitAll() cho phép tất cả các request method là OPTIONS được truy cập không cần xác thực. Các URI được cho là các trang công khai (public).
+
+Dòng tiếp theo http.authorizeRequests().antMatchers("/bill", "/cart").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')") xác định rằng trang "/bill" và "/cart" chỉ có thể được truy cập bởi các tài khoản có vai trò ROLE_ADMIN hoặc ROLE_USER.
+
+Dòng tiếp theo http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')") chỉ cho phép truy cập vào trang "/admin" đối với tài khoản có vai trò ROLE_ADMIN.
+
+Dòng tiếp theo http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403") xác định trang "/403" sẽ được hiển thị khi người dùng không có quyền truy cập vào các trang được bảo vệ.
+
+Dòng tiếp theó http.authorizeRequests().and().formLogin()... cấu hình phần đăng nhập cho ứng dụng. Nó xác định URL để xử lý đăng nhập (loginProcessingUrl), trang đăng nhập (loginPage), URL để chuyển hướng khi đăng nhập thành công (defaultSuccessUrl), URL để chuyển hướng khi đăng nhập thất bại (failureUrl), tham số tên đăng nhập (usernameParameter) và tham số tên mật khẩu (passwordParameter).
+
+Dòng cuối cùng http.authorizeRequests().and().logout()... cấu hình phần đăng xuất của ứng dụng. Nó xác định URL để xử lý đăng xuất (logoutUrl) và URL để chuyển hướng khi đăng xuất thành công (logoutSuccessUrl).
+# ===================================
+![image](https://user-images.githubusercontent.com/94300667/229833724-c8bba76a-bda2-473e-bb61-6c79a10ec359.png)
+để cấu hình việc xác thực người dùng trong ứng dụng.
+
+1 .@Autowired
+Đây là một annotation của Spring Framework, được sử dụng để tự động tìm kiếm, khởi tạo và gán giá trị cho các thành phần của ứng dụng. Trong đoạn mã này, nó được sử dụng để tự động khởi tạo một instance của lớp UserDetailsServiceImpl và gán giá trị cho thuộc tính userDetailsService.
+
+2. private UserDetailsServiceImpl userDetailsService;
+Đây là một thuộc tính của lớp hiện tại, được khai báo để lưu trữ một instance của lớp UserDetailsServiceImpl.
+
+3. @Autowired
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+auth.userDetailsService(userDetailsService);
+}
+Đây là một phương thức được ghi đè từ lớp cha WebSecurityConfigurerAdapter trong Spring Security để cấu hình việc xác thực người dùng. Trong phương thức này, AuthencationManagerBuilder được sử dụng để cấu hình chi tiết xác thực người dùng, và được cung cấp cho phương thức thông qua tham số auth. Phương thức này sử dụng userDetailsService để cung cấp thông tin chi tiết về người dùng được lưu trữ trong hệ thống, để có thể thực hiện việc xác thực người dùng.
