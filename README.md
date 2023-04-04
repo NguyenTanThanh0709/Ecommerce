@@ -10,6 +10,7 @@
 - sử dụng jsp, jstl để tạo ra giao diện trang web
 - demo một số chức năng CRUD product trong trang web
 - ĐÂY LÀ LINK VIDEO DEMO SẢN PHẨM WEB GIỮA KÌ MỌI NGƯỜI CÓ THỂ THAM KHẢO: https://www.youtube.com/watch?v=Lum0kvQnS4k
+- Trang web sử dụng java 1.8 
 
 
 ===================================================
