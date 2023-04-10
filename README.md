@@ -51,6 +51,21 @@ tại em deletemaping của em return về : response.sendRedirect("/admin"); n�
 - Sequence diagrams delete product
 ![image](https://user-images.githubusercontent.com/94300667/229813889-4db1bf74-870b-4989-847c-0d71f923af44.png)
 
+# Software Development Principles, Patterns, and Practices
+- Dependency Injection: Dependency Injection là một khái niệm trong Spring Boot cho phép ta giảm thiểu sự phụ thuộc của các thành phần trong ứng dụng, bằng cách tách các thành phần và cung cấp chúng dưới dạng các phụ thuộc (dependencies) từ bên ngoài. Khi có một thành phần phụ thuộc vào một thành phần khác, chúng ta không cần tạo ra thể hiện của thành phần phụ thuộc đó trong thành phần chính mà thay vào đó, chúng ta chỉ cần cung cấp một tham chiếu đến nó, và Spring Boot sẽ tự động tạo và cung cấp thể hiện đó.
+
+Trong Spring Boot, việc quản lý các phụ thuộc này được thực hiện thông qua một container quản lý phụ thuộc (dependency container) được gọi là ApplicationContext. Spring Boot sử dụng các annotation như @Autowired, @Component, @Service, @Repository, @Controller để quản lý và tự động liên kết các phụ thuộc. Khi các thành phần được đăng ký với ApplicationContext, chúng sẽ được quản lý bởi Spring Boot và các phụ thuộc được tự động giải quyết.
+
+Với Dependency Injection, việc thay đổi hoặc thay thế các phụ thuộc sẽ trở nên dễ dàng hơn, do đó ta có thể linh hoạt thay đổi các thành phần trong ứng dụng mà không ảnh hưởng đến các thành phần khác.
+- Model-View-Controller (MVC):Ứng dụng tuân theo mẫu kiến trúc MVC, với mô hình biểu thị dữ liệu, dạng xem hiển thị dữ liệu và bộ điều khiển xử lý đầu vào của người dùng và cập nhật mô hình và dạng xem tương ứng.
+- Repository Pattern là một mẫu thiết kế (design pattern) phổ biến được sử dụng trong Spring Boot để tách lớp xử lý dữ liệu (data access layer) ra khỏi lớp xử lý nghiệp vụ (business logic layer) của ứng dụng. Mục đích của mẫu thiết kế này là để giảm thiểu sự phụ thuộc giữa hai lớp trên và tăng tính linh hoạt cho ứng dụng.
+
+Trong Spring Boot, lớp xử lý dữ liệu thường được thực hiện bằng cách sử dụng các lớp đại diện (DAO - Data Access Object) hoặc lớp repository. Các lớp này có nhiệm vụ truy cập vào cơ sở dữ liệu để thực hiện các thao tác CRUD (Create, Read, Update, Delete) trên các đối tượng của ứng dụng.
+
+Các lớp repository trong Spring Boot thường được triển khai bằng cách sử dụng các interface và các phương thức đã được định nghĩa trước. Interface repository sẽ chứa các phương thức truy cập cơ sở dữ liệu tương ứng với các thao tác CRUD, và các lớp triển khai của repository sẽ thực hiện các phương thức này. Ngoài ra, Spring Boot cũng hỗ trợ tự động tạo các lớp triển khai của repository thông qua các annotation như @Repository, @Autowired, @Transactional.
+
+Việc sử dụng Repository Pattern giúp tách rời lớp xử lý dữ liệu khỏi lớp xử lý nghiệp vụ, giúp cho việc phát triển và bảo trì ứng dụng trở nên dễ dàng hơn, đồng thời giúp tăng tính linh hoạt cho ứng dụng.
+
 # === unit tests ===
 in file SQL and video demo above
 # === Giải thích về cấu trúc xây dựng trang web ===
