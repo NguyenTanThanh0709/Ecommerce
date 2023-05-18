@@ -1,16 +1,3 @@
-# TON DUC THANG UNIVERSITY
-# Faculty of Information Technology
-# Công nghệ Java_N2T02_HK2_2223_503111
-# Midterm take-home Assignment
-# Nguyễn Tấn Thành - 52100841
-
-- Sau đây là trang web ecommerce basic
-- sử dụng spring boot để thực hiện các quá trình xây dựng backend cho trang web
-- sử dụng spring security để authentication và authorization đối với các actor trong trang web
-- sử dụng jsp, jstl để tạo ra giao diện trang web
-- demo một số chức năng CRUD product trong trang web
-- ĐÂY LÀ LINK VIDEO DEMO SẢN PHẨM WEB GIỮA KÌ MỌI NGƯỜI CÓ THỂ THAM KHẢO: https://www.youtube.com/watch?v=Lum0kvQnS4k
-- Trang web sử dụng java 1.8 
 
 
 ===================================================
